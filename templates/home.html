@@ -15,16 +15,18 @@
 
                     <form method="post" class="mb-5">
                         {% csrf_token %}
-                        <div class="mb-3">
-                            {{ form.pesel }}
-                            {% for error in form.pesel.errors %}
-                                <div class="text-danger mt-1">{{ error }}</div>
-                            {% endfor %}
+                        <div class="d-flex justify-content-center">
+                            <div class="input-group mb-3" style="flex: 0 0 auto; width: 250px;">
+                                {{ form.pesel }}
+                                <button type="submit" class="btn btn-outline-primary" onclick="clearResult()">Sprawdź</button>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-outline-primary" onclick="clearResult()">Sprawdź</button>
+                        {% for error in form.pesel.errors %}
+                            <div class="text-danger mt-1 text-center">{{ error }}</div>
+                        {% endfor %}
                     </form>
 
-                    <div id="result-box">
+                    <div id="result-box" class="text-center">
                         {% if result is True %}
                             <h4 style="color: green;">PESEL Poprawny</h4>
                             {% if birth_date %}
@@ -34,6 +36,7 @@
                         {% elif result is False %}
                             <h4 style="color: red;">PESEL Niepoprawny</h4>
                         {% endif %}
+                    </div>
                     </div>
                 </div>
             </div>
