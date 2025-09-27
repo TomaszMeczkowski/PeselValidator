@@ -21,24 +21,35 @@
                                 <div class="text-danger mt-1">{{ error }}</div>
                             {% endfor %}
                         </div>
-                        <button type="submit" class="btn btn-outline-primary">Sprawdź</button>
+                        <button type="submit" class="btn btn-outline-primary" onclick="clearResult()">Sprawdź</button>
                     </form>
 
-                    {% if result %}
-                        <h4 style="color: green;">PESEL Poprawny</h4>
-                        {% if birth_date %}
-                            <p>Data urodzenia: <b>{{ birth_date }}</b></p>
-                            <p>Płeć: <b>{{ gender }}</b></p>
+                    <div id="result-box">
+                        {% if result %}
+                            <h4 style="color: green;">PESEL Poprawny</h4>
+                            {% if birth_date %}
+                                <p>Data urodzenia: <b>{{ birth_date }}</b></p>
+                                <p>Płeć: <b>{{ gender }}</b></p>
+                            {% endif %}
+                        {% else %}
+                            <h4 style="color: red;">PESEL Niepoprawny</h4>
+
                         {% endif %}
-                    {% else %}
-                        <h4 style="color: red;">PESEL Niepoprawny</h4>
-
-                    {% endif %}
-
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 </body>
+
+<script>
+function clearResult() {
+    const resultBox = document.getElementById("result-box");
+    if (resultBox) {
+        resultBox.innerHTML = "";
+    }
+}
+</script>
+
 </html>
