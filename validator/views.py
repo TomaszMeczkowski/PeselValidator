@@ -1,9 +1,23 @@
+import datetime
 from django.shortcuts import render
 from .forms import PeselForm
-import datetime
 
 
-def validate_pesel(pesel: str):
+def validate_pesel(pesel: str) -> tuple[bool, datetime.date | None, str | None]:
+    """
+        Waliduje numer PESEL zgodnie z oficjalną specyfikacją.
+
+        Argumenty:
+            pesel (str): Numer PESEL w formie łańcucha znaków (11 cyfr).
+
+        Zwraca:
+            tuple:
+                - bool: True, jeśli PESEL jest poprawny; False w przeciwnym razie.
+                - datetime.date | None: Data urodzenia wyliczona z numeru PESEL,
+                  None jeśli PESEL jest niepoprawny.
+                - str | None: Płeć ("Mężczyzna" lub "Kobieta"),
+                  None jeśli PESEL jest niepoprawny.
+    """
     if not pesel.isdigit() or len(pesel) != 11:
         return False, None, None
 
