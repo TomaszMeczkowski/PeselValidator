@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["PeselValidator"]
+
+[project]
+name = "pesel-validator"
+version = "0.1.0"
+description = "Django app to validate Polish PESEL numbers with date of birth and gender detection."
+authors = [
+    { name = "Tomasz Męczkowski", email = "tomasz.meczkowski@gmail.com" }
+]
+dependencies = [
+    "Django>=5.2.6,<6.0",
+    "django-environ>=0.12.0"
+]
+requires-python = ">=3.10"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-django>=4.11",
+]
