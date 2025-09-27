@@ -58,7 +58,7 @@ def home(request):
         if form.is_valid():
             pesel = form.cleaned_data["pesel"]
             valid, birth_date, gender = validate_pesel(pesel)
-            result = "PESEL poprawny" if valid else "PESEL niepoprawny"
+            result = True if valid else False
     else:
         form = PeselForm()
 

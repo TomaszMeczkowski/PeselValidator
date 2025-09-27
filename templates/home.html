@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Walidator PESEL</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h2 class="mb-4">Walidator PESEL</h2>
+
+                    <form method="post" class="mb-5">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            {{ form.pesel }}
+                            {% for error in form.pesel.errors %}
+                                <div class="text-danger mt-1">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary">Sprawdź</button>
+                    </form>
+
+                    {% if result %}
+                        <h4 style="color: green;">PESEL Poprawny</h4>
+                        {% if birth_date %}
+                            <p>Data urodzenia: <b>{{ birth_date }}</b></p>
+                            <p>Płeć: <b>{{ gender }}</b></p>
+                        {% endif %}
+                    {% else %}
+                        <h4 style="color: red;">PESEL Niepoprawny</h4>
+
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
