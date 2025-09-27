@@ -19,7 +19,7 @@ Dodatkowo aplikacja potrafi odczytać z numeru **datę urodzenia** oraz **płeć
 
 ### 1. Klonowanie repozytorium
 ```bash
-git clone https://github.com/TomaszMeczkowski/pesel-validator.git
+git clone https://github.com/TomaszMeczkowski/PeselValidator.git
 cd PeselValidator
 ```
 
